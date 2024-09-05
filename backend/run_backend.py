@@ -4,7 +4,7 @@ import os
 
 import torch
 from base_bot import MyChatBot
-from chatbot_listen import listen
+from chatbot_listen import main
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -55,4 +55,4 @@ else:
 my_bot = MyChatBot(model_name, device, access_token)
 print("Initialized chatbot")
 
-asyncio.get_event_loop().run_until_complete(listen(URL, my_bot))
+asyncio.get_event_loop().run_until_complete(main(URL, my_bot))
