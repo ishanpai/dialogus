@@ -1,11 +1,14 @@
-import websockets
-from base_bot import MyChatBot
 import json
 import time
 
+import websockets
+from base_bot import MyChatBot
+
 
 async def listen(url: str, chatbot: MyChatBot):
-    async with websockets.connect(url, ping_interval=10, ping_timeout=None) as websocket:
+    async with websockets.connect(
+        url, ping_interval=10, ping_timeout=None
+    ) as websocket:
         print("Listening to websocket for messages. Ready to talk")
         while True:
             message = await websocket.recv()
