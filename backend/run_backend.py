@@ -2,10 +2,34 @@ import asyncio
 from base_bot import MyChatBot
 from chatbot_listen import listen
 import torch
+import argparse
+import os
+from dotenv import load_dotenv
 
-model_name = "meta-llama/Meta-Llama-3-8B-Instruct"
-access_token = "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"
-URL = "wss://68de-73-93-233-54.ngrok-free.app"
+# Load environment variables from .env file
+load_dotenv()
+
+# Set up argument parser
+parser = argparse.ArgumentParser(description="Run the Python script with custom arguments")
+
+# Adding optional arguments with default values
+parser.add_argument('-address', type=str, required=True, help='Your server address')
+parser.add_argument('-model', type=str, default="meta-llama/Meta-Llama-3-8B-Instruct", help='Model name to use')
+
+# Parse the arguments
+args = parser.parse_args()
+
+# Assign the arguments to variables
+model_name = args.model
+URL = args.address
+access_token = os.getenv('HF_ACCESS_TOKEN')  # Load the token from the environment variables
+
+# Make sure the access token is available
+if access_token is None:
+    raise ValueError("Access token is missing. Please check your .env file or set it in the environment.")
+
+# Print or use the arguments in your code
+print(f"Using Model: {model_name}")
 
 if torch.cuda.is_available():
     device = torch.device("cuda")
