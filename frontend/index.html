@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Dialogus - AI Voice Assistant</title>
+</head>
+<body>
+    <h1>Dialogus - AI Voice Assistant</h1>
+    <table>
+        <tr>
+            <td>
+                <canvas id="canvas"></canvas>
+
+                <div id="your_video">
+                    <video id="video" width="640" height="480" autoplay muted></video>
+                </div>
+            </td>
+            <td colspan=2>
+                <button id="interrupt">Interrupt Dialogus</button>
+                <select id="voiceSelect"></select>
+                <button id="record">Record</button>
+                <button id="stop">Stop Recording</button>
+                <div id="output">Output</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img id="botImage" src="robot_talk.jpg" alt="Bot Image">
+            </td>
+        </tr>
+    </table>
+
+    <style>
+        body {
+            width: 80vw;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #your_video {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            position: absolute;
+        }
+
+        #output {
+            margin-top: 20px;
+            border: 1px solid #000000;
+            padding: 10px;
+            height: 500px;
+            overflow-y: scroll;
+        }
+
+        #output p:nth-child(even) {
+            background-color: #fbffb1;
+        }
+    </style>
+    <script defer src="face-api.min.js"></script>
+    <script defer src="face_recognition.js"></script>
+    <script defer src="script.js"></script>
+    <script src="gpu-browser.min.js"></script>
+
+</body>
+</html>
